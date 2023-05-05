@@ -1,6 +1,6 @@
 {
   "name": "@patriarche/vue-hooks",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -11,11 +11,9 @@
     "dev": "vite build --watch --mode development --config vite.config.ts",
     "build": "vite build --mode production --config vite.config.ts",
     "preview": "vite preview",
-    "review": "yarn review:typescript && yarn review:eslint && yarn review:stylelint",
+    "review": "yarn review:typescript && yarn review:eslint",
     "review:typescript": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "review:eslint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "review:stylelint": "stylelint src/**/*.{scss,vue} --fix --color",
-    "test:unit": "vitest --environment jsdom"
+    "review:eslint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "lodash": "^4.17.21",
