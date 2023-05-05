@@ -1,0 +1,29 @@
+{
+    "melkor": {
+        "component": {
+            "inputFile": {
+                "dragdrop": "Drag & drop ou {search}",
+                "search": "rechercher"
+            }
+        },
+        "theme": {
+            "auto": "Thème systeme",
+            "light": "Thème lumineux",
+            "dark": "Thème sombre"
+        },
+        "i18n": {
+            "en": "Anglais",
+            "fr": "Français"
+        }
+    },
+    "component": {
+        "TheHomeView": {
+            "welcome": "Bienvenue sur {appName} !",
+            "getStarted": "Propulsé par Melkor, commencer !"
+        },
+        "TheNotFoundView": {
+            "title": "404 - Page introuvable",
+            "back": "Retour accueil"
+        }
+    }
+}
