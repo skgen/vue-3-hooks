@@ -1,18 +1,33 @@
+import type { Awaitable } from '@src/types';
 import { ref, type Ref } from 'vue';
 
-export default function useAsync
-<T, S extends []>(action: (...args: S) => Awaitable<T>): [
-  (...args: S) => Promise<void>,
-  Ref<boolean>,
-] {
-  const loading = ref(false);
+type UseAsyncOptions = {
+  trackLatest: boolean;
+};
 
-  async function exec(...args: S) {
+type UseAsyncReturnType<P extends [], R> = [
+  (...args: P) => Promise<R>,
+  Ref<boolean>,
+];
+
+export default function useAsync
+<P extends [], R>(
+  callback: (...args: P) => Awaitable<R>,
+  options?: UseAsyncOptions,
+): UseAsyncReturnType<P, R> {
+  const loading = ref(false);
+  let loadingTransaction = 0;
+
+  async function exec(...args: P) {
+    loadingTransaction += 1;
+    const scopedLoadingTransaction = loadingTransaction;
     loading.value = true;
     try {
-      await action(...args);
+      return await callback(...args);
     } finally {
-      loading.value = false;
+      if (loadingTransaction === scopedLoadingTransaction || !options?.trackLatest) {
+        loading.value = false;
+      }
     }
   }
 

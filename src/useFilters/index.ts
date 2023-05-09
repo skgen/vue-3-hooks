@@ -1,4 +1,4 @@
-import { reactive, watch } from 'vue';
+import { reactive, watch, type UnwrapNestedRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { z } from 'zod';
 import rison from 'rison';
@@ -78,14 +78,25 @@ function decodeFiltersModelFromQuery(query: string) {
   }
 }
 
-type HookOptions<T extends Filters> = {
+type UseFiltersOptions<T extends Filters> = {
   schema: z.ZodType<T>;
   filters: () => T;
   urlBound: boolean;
   queryName?: string;
 };
 
-export default function useFilters<T extends Filters>(options: HookOptions<T>) {
+type UseFiltersReturnType<T> = {
+  snapshot: UnwrapNestedRefs<UnwrapNestedRefs<T>>;
+  filters: UnwrapNestedRefs<T>;
+  $commit: () => void;
+  $reset: () => void;
+  $sync: () => void;
+};
+
+export default function useFilters
+<T extends Filters>(
+  options: UseFiltersOptions<T>,
+): UseFiltersReturnType<T> {
   const router = useRouter();
   const route = useRoute();
   const filters = reactive(options.filters());
