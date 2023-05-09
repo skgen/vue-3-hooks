@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useCreateFilters } from '@patriarche/vue-hooks';
+import { useFilters } from '@patriarche/vue-hooks';
 import { z } from 'zod';
 
 const filtersSchema = z.object({
@@ -63,7 +63,7 @@ type FiltersSchema = z.infer<typeof filtersSchema>;
 
 const {
   snapshot, filters, $commit, $reset, $sync,
-} = useCreateFilters<FiltersSchema>({
+} = useFilters<FiltersSchema>({
   schema: filtersSchema,
   filters: () => ({
     name: 'Panda',

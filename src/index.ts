@@ -1,2 +1,2 @@
 export { default as useAsync } from '@src/useAsync';
-export { default as useCreateFilters } from '@src/useCreateFilters';
+export { default as useFilters } from '@src/useFilters';

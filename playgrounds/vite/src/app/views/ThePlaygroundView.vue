@@ -18,7 +18,7 @@ import AppHookDemo from '@/app/components/partials/AppHookDemo.vue';
 
 const hooks = [
   'UseAsync',
-  'UseCreateFilters',
+  'UseFilters',
 ];
 
 const list = hooks.map((hook) => ({

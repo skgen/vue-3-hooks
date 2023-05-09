@@ -6,7 +6,7 @@
     Time remaining : {{ time - diff }}ms
   </p>
   <p>
-    Loading : {{ loading }}
+    Loading : <strong>{{ loading }}</strong>
   </p>
   <mk-button
     outlined

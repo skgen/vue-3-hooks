@@ -85,7 +85,7 @@ type HookOptions<T extends Filters> = {
   queryName?: string;
 };
 
-export default function useCreateFilters<T extends Filters>(options: HookOptions<T>) {
+export default function useFilters<T extends Filters>(options: HookOptions<T>) {
   const router = useRouter();
   const route = useRoute();
   const filters = reactive(options.filters());
