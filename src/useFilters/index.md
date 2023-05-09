@@ -20,8 +20,11 @@ type UseFiltersOptions<T extends Filters> = {
 };
 ```
 `schema`: The [Zod](https://www.npmjs.com/package/zod) Schema to validate the model
+
 `filters`: A function returning the default filters
+
 `urlBound`: If set to `true`, the filters will be encoded with [rison](https://www.npmjs.com/package/rison) and stored in the URL
+
 `queryName`: The key of the URL query parameter to store the filters, defaults to `f`
 
 ## Return type
@@ -35,10 +38,15 @@ type UseFiltersReturnType<T> = {
 };
 ```
 `snapshot`: A snapshot of the filters, you can see it as an in memory mirror of the filters, waiting to be commited
+
 `filters`: The model containing the filters, this is the model bount to the URL (if `urlBound` is set to `true`)
+
 `$commit`: Apply all the modifications of `snapshot` to filters
+
 `$reset`: Reset `filters` & `snapshot` to `option.filters` return value
+
 `$sync`: Reset the `snapshot` value to current `filters` value
+
 
 > *i.e.*: `snapshot` & `filters` are reactive objects
 

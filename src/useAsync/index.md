@@ -28,6 +28,7 @@ type UseAsyncReturnType<P extends [], R> = [
 ];
 ```
 `[0]`: The reference of the callback passed in parameter
+
 `[1]`: A `ref` of the loading state
 
 ## Example
