@@ -26,11 +26,15 @@ const start = ref(0);
 const elapsed = ref(time);
 let frame: number | null = null;
 
-const [handleAsync, loading] = useAsync(async () => new Promise<void>((done) => {
-  setTimeout(() => {
-    done();
-  }, time);
-}));
+const [handleAsync, loading] = useAsync(
+  async () => {
+    await new Promise<void>((done) => {
+      setTimeout(() => {
+        done();
+      }, time);
+    });
+  },
+);
 
 function decount() {
   frame = requestAnimationFrame(() => {
