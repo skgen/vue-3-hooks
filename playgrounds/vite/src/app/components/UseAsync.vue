@@ -11,7 +11,7 @@
   <mk-button
     outlined
     :disabled="loading"
-    @click="handleAsync"
+    @click="handleAsync(time)"
   >
     Execute async
   </mk-button>
@@ -27,11 +27,11 @@ const elapsed = ref(time);
 let frame: number | null = null;
 
 const [handleAsync, loading] = useAsync(
-  async () => {
+  async (scopedTime: number) => {
     await new Promise<void>((done) => {
       setTimeout(() => {
         done();
-      }, time);
+      }, scopedTime);
     });
   },
 );

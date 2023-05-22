@@ -5,13 +5,13 @@ type UseAsyncOptions = {
   trackLatest: boolean;
 };
 
-type UseAsyncReturnType<P extends [], R> = [
+type UseAsyncReturnType<P extends unknown[], R> = [
   (...args: P) => Promise<R>,
   Ref<boolean>,
 ];
 
 export default function useAsync
-<P extends [], R>(
+<P extends unknown[], R>(
   callback: (...args: P) => Awaitable<R>,
   options?: UseAsyncOptions,
 ): UseAsyncReturnType<P, R> {
